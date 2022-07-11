@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:web_flutter_clean_architecture/dashboard_page.dart';
 class SignIn extends StatefulWidget {
   SignIn({Key? key, this.title}) : super(key: key);
 
@@ -73,14 +74,8 @@ class _SignInState extends State<SignIn> {
           Positioned.fill(
             child: Container(
               decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: <Color>[
-                    Color.fromARGB(255, 96, 8, 198),
-                    Color.fromARGB(255, 70, 6, 149),
-                    Color.fromARGB(255, 92, 43, 152),
-                  ],
-                ),
-              ),
+                color: Colors.green,
+                  borderRadius:   BorderRadius.all(Radius.circular(10.0))),
             ),
           ),
           TextButton(
@@ -89,8 +84,10 @@ class _SignInState extends State<SignIn> {
                   primary: Colors.white,
                   textStyle: const TextStyle(fontSize: 20)),
               onPressed: () {
-                // AuthProvider().login(emailController.text, passController.text);
-                ///TODO
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardPage()),
+                );
               },
               child: const Text('Sign in')),
         ],
@@ -104,15 +101,15 @@ class _SignInState extends State<SignIn> {
          //
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 20),
-        padding: EdgeInsets.all(15),
+        margin:const EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.all(15),
         alignment: Alignment.bottomCenter,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+              Text(
               'Create A New Account',
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
             ),
           ],
         ),
@@ -160,6 +157,7 @@ class _SignInState extends State<SignIn> {
             children: <Widget>[
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.only(left:MediaQuery.of(context).size.width/3,right: MediaQuery.of(context).size.width/3 ),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
